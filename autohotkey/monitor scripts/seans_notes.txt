@@ -1,0 +1,21 @@
+for any scripts involving swapping MAIN -- shift primary display to LEFT before you swap main to HDMI and shift primary display back to MAIN after swapping back to DP.
+
+Control my monitor: 
+  https://johnstonsoftwaresolutions.com/2019/02/09/tip-switch-monitor-inputs-with-command-line/
+  http://www.nirsoft.net/utils/control_my_monitor.html
+
+Main display:
+  https://www.itechtics.com/change-primary-monitor/#:~:text=To%20open%20a%20window%20on,Make%20this%20my%20main%20display.%E2%80%9D
+
+Autohotkey for hotkey to swap monitors:
+  https://superuser.com/questions/1046261/windows-10-shortcut-keys-only-work-when-shortcut-is-on-desktop
+
+Notes on hotkey for desktop shortcuts (first one also has AHK run program idea):
+  https://superuser.com/questions/1046261/windows-10-shortcut-keys-only-work-when-shortcut-is-on-desktop
+  https://forum.shotcut.org/t/keyboard-shortcuts-not-working-i-saw-the-faq/23335/6
+
+AHK change tray icon:
+  https://www.the-automator.com/autohotkey-scripts-icon/
+
+Multi-monitor tool to set primary:
+  https://www.itechtics.com/change-primary-monitor/#:~:text=To%20open%20a%20window%20on,Make%20this%20my%20main%20display.%E2%80%9D

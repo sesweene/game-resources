@@ -1,0 +1,1 @@
+ControlMyMonitor.exe /SetValue "112713D7C4200" 60 17
