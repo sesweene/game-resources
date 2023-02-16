@@ -24,6 +24,10 @@ Run, "C:\Program Files (x86)\PlayClaw 6\PlayClaw6.exe"
 ;Track Whether Hotkeys are Enabled by Pause/Home (for the purposes of chatting with Enter only, otherwise check A_IsSuspended)
 global HotkeysEnabled := True
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;; ENABLE/DISABLE ;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;;;;;;Function to toggle whether the hotkeys are disabled or not
 ToggleHotkeysEnabled()
 {
@@ -66,16 +70,11 @@ ToggleHotkeysEnabled()
     return
   }
 
-;;;;;;; Make alt function for use with inventory keys (can't use alt in game because it's hard-coded to beacon)
-;Note, we can't use Ctrl either, since observer wards have a different function when ctrl is held
-;*!a::Send u
-;*!s::Send i
-;*!e::Send o
-;*!f::Send j
-;*!d::Send k
-;*!r::Send l
-;*!t::Send {,}
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;; INEVENTORY KEYS;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;;;;;; Make Space function for use with inventory keys
 Space & w::Send u
 Space & e::Send i
 Space & r::Send o
@@ -83,24 +82,38 @@ Space & s::Send j
 Space & d::Send k
 Space & f::Send l
 Space & t::Send {,}
+Space::Send {Space} ; make space usable on its own
 
-Space::Send {Space}
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;; CAMERA HOTKEYS ;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;; Make Caps lock a usable key (without toggling your upper/lower case)
-*Capslock::m
+;;;;;;; Make XButton1 (back mouse button) function for use with camera keys
 
-;;;;;; LAlt to LCtrl for skilling
-LAlt::LCtrl
+XButton1::RAlt ;; now can use custom 3-key combinations for setting cams
+>!w::Send {[} ; use cams
+>!e::Send {]}
+>!f::Send {;}
+>!r::Send {'}
++>!w::Send ^{[} ; set cams
++>!e::Send ^{]}
++>!f::Send ^{;}
++>!r::Send ^{'}
 
-;;;;;; Make Alt function as Ctrl for Ctrl-clicking to select multiple units and subgroup order modifier key only
-/*
-!LButton::
-Send ^{LButton}
-return
-!RButton::
-Send ^{RButton}
-return
-*/
+>!LButton::m ;; camera grip with Left Mouse Button
+>!Tab::Return ; disable to prevent Alt-Tab issues
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;; MISC DOTA KEYS ;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+Capslock::n ; for directional movement (or camera grip)
+LAlt::LCtrl ; LAlt to LCtrl for skilling
+2::q ; for talents
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;; CTRL GROUPS ;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;; Make shift function as ctrl for control group setting only
 +1::Send, ^1
@@ -119,19 +132,19 @@ return
 ^5::Send, +5
 ^6::Send, +6
 
-;;;;;;;;
-;;;;;; Make back side mouse button function as Ctrl
-;XButton1::Ctrl ;; now use for camera grip
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;; MOUSE WHEEL ;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;; FOR LOGITECH M500s since Logitech OPTIONS sucks (can't use setpoint with that mouse)
   ;pickaxe bind
   *WheelLeft::
-    sendinput, {6}
+    sendinput, {q} ; open talent menu
     return
 
   ;edit reset bind
   *WheelRight::
-    sendinput, {1}
+    sendinput, {q} ; ?? not sure what for yet
     return
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	

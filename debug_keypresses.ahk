@@ -1,3 +1,0 @@
-#InstallKeybdHook
-#Persistent
-KeyHistory
