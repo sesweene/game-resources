@@ -89,36 +89,31 @@ Space::Send {Space} ; make space usable on its own
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;; Make XButton1 (back mouse button) function for use with camera keys
-XButton1 & w::Send {[} ; use cams
-XButton1 & e::Send {]}
-XButton1 & r::Send {;}
-XButton1 & t::Send {'}
-XButton1 & s::Send ^{[} ; set cams
-XButton1 & d::Send ^{]}
-XButton1 & f::Send ^{;}
-XButton1 & g::Send ^{'}
-XButton1::Send {Blind}{Space}
+
+XButton1::RAlt ;; now can use custom 3-key combinations for setting cams
+>!w::Send {[} ; use cams
+>!e::Send {]}
+>!f::Send {;}
+>!r::Send {'}
++>!w::Send ^{[} ; set cams
++>!e::Send ^{]}
++>!f::Send ^{;}
++>!r::Send ^{'}
+
+>!LButton::m ;; camera grip with Left Mouse Button
+>!Tab::Return ; disable to prevent Alt-Tab issues
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;; MISC DOTA KEYS ;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-Capslock::m ; for directional movement (or camera grip)
+Capslock::n ; for directional movement (or camera grip)
 LAlt::LCtrl ; LAlt to LCtrl for skilling
+2::q ; for talents
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;; CTRL GROUPS ;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;;;;; Make Alt function as Ctrl for Ctrl-clicking to select multiple units and subgroup order modifier key only
-/*
-!LButton::
-Send ^{LButton}
-return
-!RButton::
-Send ^{RButton}
-return
-*/
 
 ;;;;;; Make shift function as ctrl for control group setting only
 +1::Send, ^1
@@ -141,19 +136,15 @@ return
 ;;;;;;;;;;;;;;;;;; MOUSE WHEEL ;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;;;;;;;;
-;;;;;; Make back side mouse button function as Ctrl
-;XButton1::Ctrl ;; now use for camera grip
-
 ;;;;;;; FOR LOGITECH M500s since Logitech OPTIONS sucks (can't use setpoint with that mouse)
   ;pickaxe bind
   *WheelLeft::
-    sendinput, {9} ; open talent menu
+    sendinput, {q} ; open talent menu
     return
 
   ;edit reset bind
   *WheelRight::
-    sendinput, {0} ; ?? not sure what for yet
+    sendinput, {q} ; ?? not sure what for yet
     return
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
